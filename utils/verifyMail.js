@@ -4,7 +4,6 @@ import crypto from 'crypto'
 import VerificationToken from '../models/tokenModel.js'
 
 const verifyMail = expressAsyncHandler(async (user, request) => {
-  console.log(user)
   const token = await VerificationToken.create({
     _userId: user._id,
     token: crypto.randomBytes(16).toString('hex'),
