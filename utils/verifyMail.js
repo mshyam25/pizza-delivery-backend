@@ -20,8 +20,8 @@ const verifyMail = expressAsyncHandler(async (user, request) => {
     from: 'noreplytestermail@gmail.com',
     to: user.email,
     subject: 'Account Verification Link',
-    text: `Hello ${user.name},\n\n 'Please verify your account by clicking the link : \n
-    http://${request.headers.host}/confirmation/${user.email}/${token.token} \n\nThank You\n`,
+    text: `Hello <h1>${user.name}</h1>,\n\n 'Please verify your account by clicking the link : \n
+   http://${request.headers.host}/confirmation/${user.email}/${token.token}   \n\nThank You\n`,
   }
 
   transporter.sendMail(mailOptions, (error, info) => {
