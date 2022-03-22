@@ -28,6 +28,10 @@ app.get('/paypalclient', async (request, response) => {
   response.send(process.env.PAYPAL_CLIENT_ID)
 })
 
+app.get('/', (req, res) => {
+  res.send('WElcome')
+})
+
 app.use(notFound)
 app.use(errorHandler)
 
