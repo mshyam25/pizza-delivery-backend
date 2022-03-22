@@ -28,6 +28,7 @@ const verifyMail = expressAsyncHandler(async (user, request) => {
     if (error) console.log(error)
     else {
       console.log('Mail sent')
+      return true
     }
   })
 })

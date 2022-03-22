@@ -218,9 +218,7 @@ const confirmEmail = expressAsyncHandler(async (request, response) => {
   if (validToken) {
     const user = await User.findById(validToken._userId)
     if (user.isVerified) {
-      response
-        .status(200)
-        .send(<h1>User has been already verified. Please Login</h1>)
+      response.status(200).send('User has been already verified. Please Login')
     }
     user.isVerified = true
     const updatedUser = await user.save()
@@ -246,10 +244,13 @@ const resendConfirmation = expressAsyncHandler(async (request, response) => {
     if (user.isVerified) {
       response.status(500).send('Account already Verified')
     } else {
-      verifyMail(user, request)
-      response
-        .status(500)
-        .send('Verification email sent.Please check your inbox')
+      console.log('Hello')
+      if (verifyMail(user, request)) {
+        console.log('Hi')
+        response
+          .status(500)
+          .send('Verification email sent.Please check your inbox')
+      }
     }
   } else {
     response.status(404)
